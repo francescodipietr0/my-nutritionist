@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ProdottoService } from './services/prodotto-service.service';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

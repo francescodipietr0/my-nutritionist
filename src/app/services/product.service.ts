@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_ENDPOINTS } from './endpoints';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProdottoService {
-  private apiUrl = 'http://localhost:3000/prodotti'; // L'URL del backend simulato
+export class ProductService {
+
+  private endpoints = API_ENDPOINTS;
 
   constructor(private http: HttpClient) { }
 
   // Recupera tutti i prodotti
   getAllProducts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.endpoints.getProducts);
   }
 
 //   // Recupera un prodotto specifico
