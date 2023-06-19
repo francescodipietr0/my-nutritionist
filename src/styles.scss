@@ -2,6 +2,7 @@
 
 @import "./app/styles/components.scss";
 @import "./app/styles/colors.scss";
+@import "./app/styles/mat-override.scss";
 
 
 html, body { height: 100%; }
@@ -11,4 +12,11 @@ body {
     font-family: Roboto,
     "Helvetica Neue", sans-serif; 
     background: $bg-color;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 0 8vw 0 8vw;
 }

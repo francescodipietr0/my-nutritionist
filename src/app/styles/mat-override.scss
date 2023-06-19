@@ -1,0 +1,10 @@
+@import "./colors.scss";
+
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: var(--mdc-theme-error, #c2185b);
+}

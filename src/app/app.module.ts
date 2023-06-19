@@ -29,11 +29,16 @@ import { LoginFormComponent } from './components/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './pages/login.page';
 import { HomePage } from './pages/home.page';
+import { ToolbarComponent } from './components/toolbar.component';
 
 @NgModule({
   declarations: [
+    // components
     AppComponent,
     LoginFormComponent,
+    ToolbarComponent,
+
+    // pages
     LoginPage,
     HomePage,
   ],
