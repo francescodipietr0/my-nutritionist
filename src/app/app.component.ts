@@ -7,17 +7,4 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-
-  products: Observable<any> | undefined;
-
-  constructor(private prodottoService: ProdottoService) {}
-
-  ngOnInit(): void {
-    this.products = this.prodottoService.getProdotti();
-    this.products.subscribe(x => console.log(x));
-  }
-
-  
-
-}
+export class AppComponent {}
