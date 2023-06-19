@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+@import "./app/styles/components.scss";
+@import "./app/styles/colors.scss";
+
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// TODO: gestire i font, scegline 2 dal sito slavato nei preferiti
+body { 
+    margin: 0;
+    font-family: Roboto,
+    "Helvetica Neue", sans-serif; 
+    background: $bg-color;
+}
