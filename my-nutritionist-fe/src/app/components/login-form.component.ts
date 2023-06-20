@@ -20,6 +20,14 @@ import { Router } from "@angular/router";
                 <input matInput type="password" formControlName="password">
             </mat-form-field>
 
+            <mat-form-field>
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hidePassword ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
             <button mat-raised-button color="primary" type="submit">Submit</button>
         </form>
   `,
@@ -30,6 +38,7 @@ import { Router } from "@angular/router";
     // TODO: vanno bene gli undefined?
     users$: Observable<UserDto[]> | undefined;
     users: UserDto[] | undefined;
+    hidePassword: boolean = false
 
     usersSubscription: Subscription = new Subscription();
 

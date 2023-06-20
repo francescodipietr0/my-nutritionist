@@ -7,7 +7,11 @@ import { ProductDto } from "../dto/dto";
     template: `
       <ng-container *ngIf="productsChipList.length">
         <mat-chip-listbox multiple>
-          <mat-chip-option *ngFor="let product of productsChipList">{{ product.name }}</mat-chip-option>
+          <mat-chip-option
+            #chip
+            *ngFor="let product of productsChipList"
+            (click)="chip.highlighted ? null : null"
+          >{{ product.name }}</mat-chip-option>
         </mat-chip-listbox>
       </ng-container>
   `,
@@ -16,6 +20,9 @@ import { ProductDto } from "../dto/dto";
   export class ProductsChipListComponent {
     
     @Input() productsChipList: ProductDto[] = [];
+
+    // products whose quantity has to be decreased (because eaten)
+    productsToDecrease: number[] = [];
 
   }
   

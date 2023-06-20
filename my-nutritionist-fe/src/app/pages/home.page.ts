@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 @Component({
     selector: 'mynt-home-page',
     template: `
+        <div class="header"></div>
         <ng-container *ngIf="products$ | async as products">
           <mynt-products-chip-list [productsChipList]="products"></mynt-products-chip-list>
         </ng-container>

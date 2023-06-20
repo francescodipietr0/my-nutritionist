@@ -1,4 +1,4 @@
 <mynt-toolbar></mynt-toolbar>
-<div class="app-container">
+<div class="app-container" [class.is-login]="router.url === '/'">
     <router-outlet></router-outlet>
 </div>
