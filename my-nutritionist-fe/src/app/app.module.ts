@@ -10,6 +10,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -30,13 +31,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './pages/login.page';
 import { HomePage } from './pages/home.page';
 import { ToolbarComponent } from './components/toolbar.component';
+import { ProductsChipListComponent } from './components/products-chip-list.component';
 
 @NgModule({
   declarations: [
+    // TODO: valuta di fare moduli separati
     // components
     AppComponent,
     LoginFormComponent,
     ToolbarComponent,
+    ProductsChipListComponent,
 
     // pages
     LoginPage,
@@ -55,6 +59,7 @@ import { ToolbarComponent } from './components/toolbar.component';
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,

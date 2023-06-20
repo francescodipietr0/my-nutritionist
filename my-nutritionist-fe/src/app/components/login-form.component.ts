@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MD5 } from 'crypto-js';
 import { UserService } from "../services/user.service";
 import { UserDto } from "../dto/dto";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'mynt-login-form',
@@ -26,12 +27,17 @@ import { Observable } from "rxjs";
   })
   export class LoginFormComponent implements OnDestroy {
     loginForm: FormGroup ;
-    users$: Observable<UserDto[]>;
-    users: UserDto[];
+    // TODO: vanno bene gli undefined?
+    users$: Observable<UserDto[]> | undefined;
+    users: UserDto[] | undefined;
+
+    usersSubscription: Subscription = new Subscription();
+
   
     constructor(
       private formBuilder: FormBuilder,
       private userService: UserService,
+      private router: Router,
     ) {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
@@ -41,20 +47,32 @@ import { Observable } from "rxjs";
   
     onSubmit() {
       if (this.loginForm.valid) {
-        console.log(this.loginForm.value);
+        const typedUsername = this.loginForm.value.username;
+        const typedPassword = this.loginForm.value.password;
 
-        const hash = MD5(this.loginForm.value.password).toString();
-        this.users$ = this.userService.getAllUsers()
-          .subscribe( users => this.users = users);
+        const hashedPassword = MD5(typedPassword).toString();
+        this.users$ = this.userService.getAllUsers();
+        this.usersSubscription = this.users$
+          .subscribe(users => {
+            const existingUser = users.find(user => user.username === typedUsername);
+            if(existingUser && hashedPassword === existingUser.password) {
+              this.router.navigate(['/home']);
+            } else {
+              // TODO: handle
+            }
+          });
       }
     }
 
     ngOnDestroy(): void {
-      this.users$.unsubscribe();
+      this.usersSubscription.unsubscribe();
     }
 
-    
 
+    // TOOD: gestire le rotte autenticate:
+    // ho creato un form di login nella mia applicazione che confronta i dati inseriti con quelli presenti nel DB. se matchano, mi sposto nella pagina "/home". 
+    // il problema è che chiunque, modificando la url da "localhost:4200" a "localhost:4200/home" può accedere alla home senza loggarsi.
+    // come posso far raggiungere "/home" solo se si è effettivamente loggati?
 
   }
   
