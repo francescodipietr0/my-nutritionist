@@ -3,3 +3,9 @@ form {
     flex-direction: column;
 }
 
+mat-chip-listbox {
+    .mdc-evolution-chip-set__chips {
+        display: flex;
+        justify-content: center;
+    }
+}

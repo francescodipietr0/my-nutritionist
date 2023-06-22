@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ProductDto } from "../dto/dto";
 
@@ -8,9 +8,8 @@ import { ProductDto } from "../dto/dto";
       <ng-container *ngIf="productsChipList.length">
         <mat-chip-listbox multiple>
           <mat-chip-option
-            #chip
             *ngFor="let product of productsChipList"
-            (click)="chip.highlighted ? null : null"
+            (click)="handleClick(product.id)"
           >{{ product.name }}</mat-chip-option>
         </mat-chip-listbox>
       </ng-container>
@@ -21,8 +20,15 @@ import { ProductDto } from "../dto/dto";
     
     @Input() productsChipList: ProductDto[] = [];
 
-    // products whose quantity has to be decreased (because eaten)
-    productsToDecrease: number[] = [];
+    // product ids whose quantity has to be decreased (because eaten)
+    public productsToDecrease: number[] = [];
+
+    handleClick(id: number) {
+      const index = this.productsToDecrease.indexOf(id);
+      index > -1
+        ? this.productsToDecrease.splice(index, 1)
+        : this.productsToDecrease.push(id)
+    }
 
   }
   

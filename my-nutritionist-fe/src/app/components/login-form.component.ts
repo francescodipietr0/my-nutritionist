@@ -10,20 +10,16 @@ import { Router } from "@angular/router";
     selector: 'mynt-login-form',
     template: `
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <mat-form-field>
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="username">
-            </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput type="password" formControlName="password">
+              <mat-label>Enter your username</mat-label>
+              <input matInput formControlName="username">
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hidePassword ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword" type="button">
                 <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
@@ -38,10 +34,9 @@ import { Router } from "@angular/router";
     // TODO: vanno bene gli undefined?
     users$: Observable<UserDto[]> | undefined;
     users: UserDto[] | undefined;
-    hidePassword: boolean = false
+    hidePassword: boolean = true;
 
     usersSubscription: Subscription = new Subscription();
-
   
     constructor(
       private formBuilder: FormBuilder,
@@ -68,6 +63,7 @@ import { Router } from "@angular/router";
               this.router.navigate(['/home']);
             } else {
               // TODO: handle
+              alert("gestire l'errore");
             }
           });
       }

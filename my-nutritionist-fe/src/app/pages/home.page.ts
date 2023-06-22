@@ -7,11 +7,20 @@ import { Observable } from "rxjs";
     selector: 'mynt-home-page',
     template: `
         <div class="header"></div>
-        <ng-container *ngIf="products$ | async as products">
-          <mynt-products-chip-list [productsChipList]="products"></mynt-products-chip-list>
-        </ng-container>
+        <div class="container">
+          <ng-container *ngIf="products$ | async as products">
+            <mynt-products-chip-list [productsChipList]="products" #chipList></mynt-products-chip-list>
+            <button mat-raised-button color="primary" type="button" (click)="handleButton(chipList.productsToDecrease)">Submit</button>
+          </ng-container>
+        </div>
   `,
-    styles: [''],
+    styles: [`
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+    `]
   })
   export class HomePage {
 
@@ -19,6 +28,10 @@ import { Observable } from "rxjs";
 
     constructor(private productService: ProductService) {
       this.products$ = productService.getAllProducts();
+    }
+
+    handleButton(productsToDecrease: number[]) {
+      debugger;
     }
 
   }
