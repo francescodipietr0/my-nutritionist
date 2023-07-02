@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { API_ENDPOINTS } from './endpoints';
 import { ProductDto } from '../dto/dto';
 
@@ -15,7 +15,17 @@ export class ProductService {
 
   // Recupera tutti i prodotti
   getAllProducts(): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(this.endpoints.getProducts);
+    return this.http.get<ProductDto[]>(this.endpoints.getProducts());
+  }
+
+  // Recupera tutti i prodotti presenti
+  getExistingProducts(): Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(this.endpoints.getProducts())
+      .pipe(
+        map(products => {
+          return products.filter(product => product.stock >= 0)
+        })
+      );
   }
 
 //   // Recupera un prodotto specifico
@@ -29,11 +39,10 @@ export class ProductService {
 //     return this.http.post<any>(this.apiUrl, prodotto);
 //   }
 
-//   // Aggiorna un prodotto esistente
-//   updateProduct(prodotto: any): Observable<any> {
-//     const url = `${this.apiUrl}/${prodotto.id}`;
-//     return this.http.put<any>(url, prodotto);
-//   }
+  // Aggiorna un prodotto esistente
+  updateProduct(product: ProductDto): Observable<ProductDto> {
+    return this.http.put<ProductDto>(this.endpoints.updateProduct(product.id), product);
+  }
 
 //   // Elimina un prodotto
 //   deleteProduct(id: number): Observable<any> {

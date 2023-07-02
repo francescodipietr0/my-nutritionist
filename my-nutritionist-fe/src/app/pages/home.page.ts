@@ -27,11 +27,13 @@ import { Observable } from "rxjs";
     products$: Observable<ProductDto[]>;
 
     constructor(private productService: ProductService) {
-      this.products$ = productService.getAllProducts();
+      this.products$ = productService.getExistingProducts();
     }
 
     handleButton(productsToDecrease: number[]) {
-      debugger;
+      productsToDecrease.forEach(product => {
+        
+      });
     }
 
   }

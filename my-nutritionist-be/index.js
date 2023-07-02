@@ -39,6 +39,7 @@ app.get('/', (req, res) => {
 });
 
 // Definizione delle API
+
 app.get('/products', (req, res) => {
   const query = 'SELECT * FROM products';
   connection.query(query, (err, results) => {
@@ -50,6 +51,24 @@ app.get('/products', (req, res) => {
     }
   });
 });
+
+app.put('/products/:id', (req, res) => {
+  const id = req.params.id;  // Ottieni l'id dall'URL dei parametri
+
+  // Ottieni i dati inviati nella richiesta PUT
+  const data = req.body;
+
+  // Esegui la query sul database utilizzando l'id
+  connection.query('UPDATE products SET ? WHERE id = ?', [data, id], (err, results) => {
+    if (err) {
+      console.error('Errore durante l\'esecuzione della query:', err);
+      res.status(500).json({ error: 'Errore del server' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 
 app.get('/users', (req, res) => {
   const query = 'SELECT * FROM users';
