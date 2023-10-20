@@ -61,9 +61,7 @@ import { Observable, map } from "rxjs";
       productService.getAllProducts()
         .subscribe(products => {
           this.products = products;
-          console.log(this.products);
           this.products = productService.reorderProducts(this.products);
-          console.log(this.products);
         });
     }
 
