@@ -27,10 +27,11 @@ import { Observable } from "rxjs";
     products$: Observable<ProductDto[]>;
 
     constructor(private productService: ProductService) {
-      this.products$ = productService.getExistingProducts();
+      this.products$ = productService.getAvailableProducts();
     }
 
     handleButton(productsToDecrease: number[]) {
+      console.log("selezionati: ", productsToDecrease);
       productsToDecrease.forEach(product => {
         
       });

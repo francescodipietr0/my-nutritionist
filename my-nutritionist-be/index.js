@@ -17,7 +17,7 @@ app.use(express.static('../my-nutritionist'));
 
 // Configurazione della connessione al database
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 3306,
     user: 'root',
     password: 'root',
@@ -42,6 +42,18 @@ app.get('/', (req, res) => {
 
 app.get('/products', (req, res) => {
   const query = 'SELECT * FROM products';
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Errore durante l\'esecuzione della query:', err);
+      res.status(500).json({ error: 'Errore del server' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.get('/available-products', (req, res) => {
+  const query = 'SELECT * FROM products p WHERE p.stock >= p.consumption';
   connection.query(query, (err, results) => {
     if (err) {
       console.error('Errore durante l\'esecuzione della query:', err);

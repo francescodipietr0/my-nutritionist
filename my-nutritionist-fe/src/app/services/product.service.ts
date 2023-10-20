@@ -18,14 +18,9 @@ export class ProductService {
     return this.http.get<ProductDto[]>(this.endpoints.getProducts());
   }
 
-  // Recupera tutti i prodotti presenti
-  getExistingProducts(): Observable<ProductDto[]> {
-    return this.http.get<ProductDto[]>(this.endpoints.getProducts())
-      .pipe(
-        map(products => {
-          return products.filter(product => product.stock >= 0)
-        })
-      );
+  // Recupera i prodotti disponibili
+  getAvailableProducts(): Observable<ProductDto[]> {
+    return this.http.get<ProductDto[]>(this.endpoints.getAvailableProducts());
   }
 
 //   // Recupera un prodotto specifico

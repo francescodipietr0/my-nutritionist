@@ -3,6 +3,7 @@ export const API_BASE_URL = "http://localhost:3000";
 export const API_ENDPOINTS = {
     // Esempio di endpoint per ottenere la lista dei prodotti
     getProducts: () => `${API_BASE_URL}/products`,
+    getAvailableProducts: () => `${API_BASE_URL}/available-products`,
     updateProduct: (id: number) => `${API_BASE_URL}/products/${id}`,
     
     // // Esempio di endpoint per ottenere un singolo prodotto per ID
