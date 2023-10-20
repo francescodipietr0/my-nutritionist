@@ -44,4 +44,30 @@ export class ProductService {
 //     const url = `${this.apiUrl}/${id}`;
 //     return this.http.delete<any>(url);
 //   }
+
+
+  reorderProducts(products: ProductDto[]): ProductDto[] {
+    let enoughProducts: ProductDto[] = [];
+    let warningProducts: ProductDto[] = [];
+    let emptyProducts: ProductDto[] = [];
+
+    // TODO: gestire il caso in cui stock e consumption sono 0??? gestirlo direttamente in fase di inserimento!
+    products.forEach(product => {
+      if(product.stock >= (product.consumption * 2)) {
+        product.status = "enough";
+        enoughProducts.push(product);
+      }
+      else if(product.stock >= product.consumption) {
+        product.status = "warning";
+        warningProducts.push(product);
+      }
+      else {
+        product.status = "empty";
+        emptyProducts.push(product);
+      }
+    });
+    products = [...enoughProducts, ...warningProducts, ...emptyProducts];
+
+    return products;
+  }
 }

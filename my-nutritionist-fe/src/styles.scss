@@ -22,4 +22,7 @@ body {
     &.is-login {
         margin-top: 50px;
     }
+    &.table-container {
+        padding: unset;
+    }
 }

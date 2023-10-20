@@ -1,4 +1,9 @@
-<mynt-toolbar></mynt-toolbar>
-<div class="app-container" [class.is-login]="router.url === '/'">
+<mynt-toolbar
+    [title]="router.url === '/home' ? 'PRODUCTS' : 'MY NUTRITIONIST'"
+></mynt-toolbar>
+<div class="app-container" 
+    [class.is-login]="router.url === '/'"
+    [class.table-container]="router.url === '/home'"
+>
     <router-outlet></router-outlet>
 </div>

@@ -9,3 +9,22 @@ mat-chip-listbox {
         justify-content: center;
     }
 }
+
+.mat-mdc-table {
+    background: rgba(66, 66, 66, 0.5);
+    
+    tbody {
+        tr {
+            td.enough {
+                //
+            }
+            td.warning {
+                //
+            }
+            td.empty {
+                //
+            }
+        }
+    }
+
+}

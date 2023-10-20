@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
                 <mat-icon>menu</mat-icon>
             </button>
-            <span>MY NUTRITIONIST</span>
+            <span>{{ title }}</span>
             <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
                 <mat-icon>share</mat-icon>
             </button>
@@ -17,6 +17,10 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     styles: [''],
   })
   export class ToolbarComponent {
+
+    @Input() title = "MY NUTRITIONIST";
+    
+    
 
   }
   
