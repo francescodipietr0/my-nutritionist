@@ -15,14 +15,9 @@ mat-chip-listbox {
     
     tbody {
         tr {
-            td.enough {
-                //
-            }
-            td.warning {
-                //
-            }
-            td.empty {
-                //
+            td.enough, td.warning, td.empty {
+                // TODO: risolvere questione center
+                padding-left: 6.5vw;
             }
         }
     }

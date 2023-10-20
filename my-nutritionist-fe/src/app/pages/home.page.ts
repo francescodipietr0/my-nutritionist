@@ -11,26 +11,25 @@ import { Observable, map } from "rxjs";
           <ng-container *ngIf="products && products.length">
             <table mat-table [dataSource]="products" class="mat-elevation-z8">
 
-              <!-- Position Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-
-              <!-- Name Column -->
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
               </ng-container>
 
-              <!-- Weight Column -->
               <ng-container matColumnDef="stock">
                 <th mat-header-cell *matHeaderCellDef> Stock </th>
                 <td
                   mat-cell *matCellDef="let element"
-                  [class]="element.status"
                 > {{element.stock}} </td>
               </ng-container>
+
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element" [class]="element.status">
+                  <img [src]="productService.getProductIconStatus(element.status)" alt="Product status" />
+                </td>
+              </ng-container>
+
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -54,7 +53,7 @@ import { Observable, map } from "rxjs";
   })
   export class HomePage {
 
-    displayedColumns: string[] = ['id', 'name', 'stock'];
+    displayedColumns: string[] = ['name', 'stock', 'status'];
     products: ProductDto[] = [];
 
     constructor(public productService: ProductService) {

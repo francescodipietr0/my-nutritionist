@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { API_ENDPOINTS } from './endpoints';
 import { ProductDto } from '../dto/dto';
+import { ProductStatus } from 'src/types/types';
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +70,19 @@ export class ProductService {
     products = [...enoughProducts, ...warningProducts, ...emptyProducts];
 
     return products;
+  }
+
+  getProductIconStatus(status: ProductStatus): String {
+    if(status === "enough") {
+      return "assets/svg/check_circle_black.svg";
+    }
+    if(status === "warning") {
+      return "assets/svg/warning_black.svg";
+    }
+    if(status === "empty") {
+      return "assets/svg/error_black.svg";
+    }
+
+    return "";
   }
 }
