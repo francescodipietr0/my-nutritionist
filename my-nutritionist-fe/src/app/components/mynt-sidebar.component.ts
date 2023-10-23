@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
@@ -5,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     selector: 'mynt-sidebar',
     template: `
       <div class="flex-center">
-        <div class="menu">
+        <div class="menu" [class.active]="active">
 
         </div>
         <div class="backdrop">
@@ -23,24 +24,41 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
         width: 100%;
         height: 100%;
+        visibility: hidden;
+      }
+
+      :host.active {
+        visibility: visible;
       }
 
       .menu {
         width: 65%;
         height: 92vh;
         background: white;
+        transition: width 0.5s;
+      }
+
+      :host.active .menu {
+
       }
 
       .backdrop {
         width: 35%;
         height: 92vh;
         background: $secondary-color;
+        transition: width 0.5s;
+      }
+
+      :host.active .backdrop {
+
       }
 
     `],
   })
   export class MyntSidebarComponent implements OnDestroy {
     
+    @Input() active = false;
+
     constructor() {
       document.body.classList.add("is-menu-open");
     }
