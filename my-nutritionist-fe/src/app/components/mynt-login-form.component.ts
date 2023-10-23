@@ -29,7 +29,7 @@ import { Router } from "@angular/router";
   `,
     styles: [''],
   })
-  export class LoginFormComponent implements OnDestroy {
+  export class MyntLoginFormComponent implements OnDestroy {
     loginForm: FormGroup ;
     // TODO: vanno bene gli undefined?
     users$: Observable<UserDto[]> | undefined;

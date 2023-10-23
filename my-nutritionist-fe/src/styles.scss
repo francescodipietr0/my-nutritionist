@@ -6,12 +6,17 @@
 
 
 html, body { height: 100%; }
+
 // TODO: gestire i font, scegline 2 dal sito slavato nei preferiti
 body { 
     margin: 0;
     font-family: Roboto,
     "Helvetica Neue", sans-serif; 
     background: $bg-color;
+    
+    &.is-menu-open {
+        overflow: hidden;
+    }
 }
 
 .app-container {
@@ -25,4 +30,10 @@ body {
     &.table-container {
         padding: unset;
     }
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

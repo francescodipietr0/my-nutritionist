@@ -5,5 +5,8 @@
     [class.is-login]="router.url === '/'"
     [class.table-container]="router.url === '/home'"
 >
+    <ng-container *ngIf="menuService.menu$ | async as menuStatus">
+        <mynt-sidebar></mynt-sidebar>
+    </ng-container>
     <router-outlet></router-outlet>
 </div>

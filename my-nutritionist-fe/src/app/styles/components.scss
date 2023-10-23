@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 form {
     display: flex;
     flex-direction: column;
@@ -11,13 +13,13 @@ mat-chip-listbox {
 }
 
 .mat-mdc-table {
-    background: rgba(66, 66, 66, 0.5);
+    // background: rgba(66, 66, 66, 0.5);
+    background: $secondary-color;
     
     tbody {
         tr {
             td.enough, td.warning, td.empty {
-                // TODO: risolvere questione center
-                padding-left: 6.5vw;
+                
             }
         }
     }

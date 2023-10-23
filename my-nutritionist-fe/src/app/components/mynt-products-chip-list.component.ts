@@ -16,7 +16,7 @@ import { ProductDto } from "../dto/dto";
   `,
     styles: [''],
   })
-  export class ProductsChipListComponent {
+  export class MyntProductsChipListComponent {
     
     @Input() productsChipList: ProductDto[] = [];
 

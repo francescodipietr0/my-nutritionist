@@ -26,21 +26,24 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { LoginFormComponent } from './components/login-form.component';
+import { MyntLoginFormComponent } from './components/mynt-login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPage } from './pages/login.page';
 import { HomePage } from './pages/home.page';
-import { ToolbarComponent } from './components/toolbar.component';
-import { ProductsChipListComponent } from './components/products-chip-list.component';
+import { MyntToolbarComponent } from './components/mnyt-toolbar.component';
+import { MyntProductsChipListComponent } from './components/mynt-products-chip-list.component';
+import { MyntSidebarComponent } from './components/mynt-sidebar.component';
 
 @NgModule({
   declarations: [
     // TODO: valuta di fare moduli separati
+    
     // components
     AppComponent,
-    LoginFormComponent,
-    ToolbarComponent,
-    ProductsChipListComponent,
+    MyntLoginFormComponent,
+    MyntToolbarComponent,
+    MyntProductsChipListComponent,
+    MyntSidebarComponent,
 
     // pages
     LoginPage,

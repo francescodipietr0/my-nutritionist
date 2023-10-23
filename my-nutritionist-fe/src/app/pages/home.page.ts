@@ -26,7 +26,9 @@ import { Observable, map } from "rxjs";
               <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef> Status </th>
                 <td mat-cell *matCellDef="let element" [class]="element.status">
-                  <img [src]="productService.getProductIconStatus(element.status)" alt="Product status" />
+                  <div class="flex-center">
+                    <img [src]="productService.getProductIconStatus(element.status)" alt="Product status" />
+                  </div>
                 </td>
               </ng-container>
 
