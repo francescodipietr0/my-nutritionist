@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MenuService } from "../services/menu.service";
 
@@ -54,16 +54,16 @@ import { MenuService } from "../services/menu.service";
 
     `],
   })
-  export class MyntSidebarComponent implements OnDestroy {
+  export class MyntSidebarComponent implements OnChanges {
     
     @Input() active = false;
 
-    constructor(public menuService: MenuService) {
-      document.body.classList.add("is-menu-open");
-    }
+    constructor(public menuService: MenuService) {}
 
-    ngOnDestroy(): void {
-      document.body.classList.remove("is-menu-open");
+    ngOnChanges(): void {
+      this.active
+        ? document.body.classList.add("is-menu-open")
+        : document.body.classList.remove("is-menu-open")
     }
     
 

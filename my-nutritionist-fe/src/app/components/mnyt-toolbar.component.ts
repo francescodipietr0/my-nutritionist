@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MenuService } from "../services/menu.service";
 import { Observable, Subscription } from "rxjs";
@@ -18,7 +18,7 @@ import { Observable, Subscription } from "rxjs";
   `,
     styles: [''],
   })
-  export class MyntToolbarComponent {
+  export class MyntToolbarComponent implements OnInit, OnDestroy {
 
     @Input() title = "MY NUTRITIONIST";
     isOpen: boolean | null = null;
