@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MenuService } from "../services/menu.service";
+import { Observable, Subscription } from "rxjs";
 
 @Component({
     selector: 'mynt-toolbar',
@@ -19,14 +20,26 @@ import { MenuService } from "../services/menu.service";
   })
   export class MyntToolbarComponent {
 
-    isOpen = false;
     @Input() title = "MY NUTRITIONIST";
-    
+    isOpen: boolean | null = null;
+    menuSubscription: Subscription | null = null;
+
     constructor(private menuService: MenuService) {}
+
+    ngOnInit() {
+      this.menuSubscription = this.menuService.menu$.subscribe(isOpen => {
+        this.isOpen = isOpen;
+      });
+    }
+  
+    ngOnDestroy() {
+      if (this.menuSubscription) {
+        this.menuSubscription.unsubscribe();
+      }
+    }
 
     handleClick() {
       this.menuService.changeMenuStatus(!this.isOpen)
-      this.isOpen = !this.isOpen;
     }
 
   }

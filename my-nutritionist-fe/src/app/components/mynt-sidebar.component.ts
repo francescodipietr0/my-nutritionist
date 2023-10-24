@@ -1,16 +1,15 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { MenuService } from "../services/menu.service";
 
 @Component({
     selector: 'mynt-sidebar',
     template: `
       <div class="flex-center">
         <div class="menu" [class.active]="active">
-
         </div>
-        <div class="backdrop">
-
+        <div class="backdrop" (click)="menuService.changeMenuStatus(false)">
         </div>
       </div>
   `,
@@ -59,7 +58,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     
     @Input() active = false;
 
-    constructor() {
+    constructor(public menuService: MenuService) {
       document.body.classList.add("is-menu-open");
     }
 
