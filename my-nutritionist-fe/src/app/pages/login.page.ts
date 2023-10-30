@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     template: `
         <mynt-login-form></mynt-login-form>
   `,
-    styles: [''],
+    styles: [``],
   })
   export class LoginPage {
   }

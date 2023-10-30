@@ -14,7 +14,7 @@ import { ProductDto } from "../dto/dto";
         </mat-chip-listbox>
       </ng-container>
   `,
-    styles: [''],
+    styles: [``],
   })
   export class MyntProductsChipListComponent {
     

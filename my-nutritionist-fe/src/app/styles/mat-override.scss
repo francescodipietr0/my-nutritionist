@@ -8,3 +8,29 @@ mat-toolbar {
 .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
     color: var(--mdc-theme-error, #c2185b);
 }
+
+// TODO: capire perchè il secondary color non viene rispettato
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//     background-color: $secondary-color;
+// }
+
+mat-chip-listbox {
+    .mdc-evolution-chip-set__chips {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.mat-mdc-table {
+    // background: rgba(66, 66, 66, 0.5);
+    background: $secondary-color;
+    
+    tbody {
+        tr {
+            td.enough, td.warning, td.empty {
+                
+            }
+        }
+    }
+
+}

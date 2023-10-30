@@ -1,27 +1,3 @@
 @import "./colors.scss";
 
-form {
-    display: flex;
-    flex-direction: column;
-}
 
-mat-chip-listbox {
-    .mdc-evolution-chip-set__chips {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-.mat-mdc-table {
-    // background: rgba(66, 66, 66, 0.5);
-    background: $secondary-color;
-    
-    tbody {
-        tr {
-            td.enough, td.warning, td.empty {
-                
-            }
-        }
-    }
-
-}

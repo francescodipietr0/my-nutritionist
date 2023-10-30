@@ -16,7 +16,7 @@ import { Observable, Subscription } from "rxjs";
             </button>
         </mat-toolbar>
   `,
-    styles: [''],
+    styles: [``],
   })
   export class MyntToolbarComponent implements OnInit, OnDestroy {
 

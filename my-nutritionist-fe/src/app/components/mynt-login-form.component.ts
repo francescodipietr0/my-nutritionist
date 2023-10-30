@@ -27,7 +27,12 @@ import { Router } from "@angular/router";
             <button mat-raised-button color="primary" type="submit">Submit</button>
         </form>
   `,
-    styles: [''],
+    styles: [`
+      form {
+          display: flex;
+          flex-direction: column;
+      }
+    `],
   })
   export class MyntLoginFormComponent implements OnDestroy {
     loginForm: FormGroup ;
