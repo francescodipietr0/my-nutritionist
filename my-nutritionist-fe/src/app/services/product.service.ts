@@ -74,13 +74,13 @@ export class ProductService {
 
   getProductIconStatus(status: ProductStatus): String {
     if(status === "enough") {
-      return "assets/svg/check_circle_black.svg";
+      return "./assets/svg/check_circle_black.svg";
     }
     if(status === "warning") {
-      return "assets/svg/warning_black.svg";
+      return "./assets/svg/warning_black.svg";
     }
     if(status === "empty") {
-      return "assets/svg/error_black.svg";
+      return "./assets/svg/error_black.svg";
     }
 
     return "";

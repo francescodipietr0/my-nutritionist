@@ -7,7 +7,9 @@ import { MenuService } from "../services/menu.service";
     selector: 'mynt-sidebar',
     template: `
       <div class="flex-center">
-        <div class="menu" [class.active]="active">
+        <div class="menu">
+          <div class="inner-menu">
+          </div>
         </div>
         <div class="backdrop" (click)="menuService.changeMenuStatus(false)">
         </div>
@@ -31,14 +33,20 @@ import { MenuService } from "../services/menu.service";
       }
 
       .menu {
-        width: 65%;
+        width: 0;
         height: 92vh;
         background: white;
-        transition: width 0.5s;
+        transition: width 0.2s;
+
+        .inner-menu {
+          width: 100%;
+          height: 100%;
+          background: $bg-color;
+        }
       }
 
       :host.active .menu {
-
+        width: 65%;
       }
 
       .backdrop {
@@ -46,10 +54,6 @@ import { MenuService } from "../services/menu.service";
         height: 92vh;
         background: $secondary-color;
         transition: width 0.5s;
-      }
-
-      :host.active .backdrop {
-
       }
 
     `],
